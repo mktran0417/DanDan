@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/13. Xepher.mp3-eb7d5354ffe48677e944e8c8fd614beb.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/13. Xepher.mp3"
+dest_files=[ "res://.import/13. Xepher.mp3-eb7d5354ffe48677e944e8c8fd614beb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

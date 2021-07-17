@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/J.I.D_-_Hereditary_(mp3.pm).mp3-3c8ca67628d29ce3179283105d3300dd.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/J.I.D_-_Hereditary_(mp3.pm).mp3"
+dest_files=[ "res://.import/J.I.D_-_Hereditary_(mp3.pm).mp3-3c8ca67628d29ce3179283105d3300dd.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

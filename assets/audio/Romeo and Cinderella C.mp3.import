@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Romeo and Cinderella C.mp3-deee607f2d0db15638cd6853e07a257e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Romeo and Cinderella C.mp3"
+dest_files=[ "res://.import/Romeo and Cinderella C.mp3-deee607f2d0db15638cd6853e07a257e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

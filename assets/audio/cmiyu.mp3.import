@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/cmiyu.mp3-335d3d78269d61e6ce8f26168be0aa7b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/cmiyu.mp3"
+dest_files=[ "res://.import/cmiyu.mp3-335d3d78269d61e6ce8f26168be0aa7b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Kaichou wa Maid-sama OST- Main Theme.mp3-dbf08b6da31c09cd2fa0dc520ef5425e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Kaichou wa Maid-sama OST- Main Theme.mp3"
+dest_files=[ "res://.import/Kaichou wa Maid-sama OST- Main Theme.mp3-dbf08b6da31c09cd2fa0dc520ef5425e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

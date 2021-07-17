@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Garden of Sinners Shiki.mp3-7cd9f5e3dc1f528e66db518393c4b06d.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Garden of Sinners Shiki.mp3"
+dest_files=[ "res://.import/Garden of Sinners Shiki.mp3-7cd9f5e3dc1f528e66db518393c4b06d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

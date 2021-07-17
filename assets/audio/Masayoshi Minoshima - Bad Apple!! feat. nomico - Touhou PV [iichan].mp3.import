@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Masayoshi Minoshima - Bad Apple!! feat. nomico - Touhou PV [iichan].mp3-4f7e51de9efa076ddb651c248b4e3dd9.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Masayoshi Minoshima - Bad Apple!! feat. nomico - Touhou PV [iichan].mp3"
+dest_files=[ "res://.import/Masayoshi Minoshima - Bad Apple!! feat. nomico - Touhou PV [iichan].mp3-4f7e51de9efa076ddb651c248b4e3dd9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

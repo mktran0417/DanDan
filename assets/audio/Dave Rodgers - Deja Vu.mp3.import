@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Dave Rodgers - Deja Vu.mp3-1b862a806518737f7a232829d868e42b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Dave Rodgers - Deja Vu.mp3"
+dest_files=[ "res://.import/Dave Rodgers - Deja Vu.mp3-1b862a806518737f7a232829d868e42b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

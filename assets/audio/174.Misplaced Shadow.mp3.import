@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/174.Misplaced Shadow.mp3-9fbb2b5a531cb3f0112b0a7f63b82c23.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/174.Misplaced Shadow.mp3"
+dest_files=[ "res://.import/174.Misplaced Shadow.mp3-9fbb2b5a531cb3f0112b0a7f63b82c23.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

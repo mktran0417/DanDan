@@ -1,0 +1,51 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Dev\\cocoBit\\DanDan\\DanDanCS.csproj": {}
+  },
+  "projects": {
+    "C:\\Dev\\cocoBit\\DanDan\\DanDanCS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Dev\\cocoBit\\DanDan\\DanDanCS.csproj",
+        "projectName": "DanDanCS",
+        "projectPath": "C:\\Dev\\cocoBit\\DanDan\\DanDanCS.csproj",
+        "packagesPath": "C:\\Users\\miray\\.nuget\\packages\\",
+        "outputPath": "C:\\Dev\\cocoBit\\DanDan\\.mono\\temp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\miray\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "NAudio": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

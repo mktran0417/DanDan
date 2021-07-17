@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ys 2 - To Make The End Of Battle-S.S.H.mp3-206df6be7fa47c899c47b2a75575ed73.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Ys 2 - To Make The End Of Battle-S.S.H.mp3"
+dest_files=[ "res://.import/Ys 2 - To Make The End Of Battle-S.S.H.mp3-206df6be7fa47c899c47b2a75575ed73.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

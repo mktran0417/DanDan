@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Liquid Tension Experiment - Paradigm Shift.mp3-932efa071c69de462d60b0b9814d570b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Liquid Tension Experiment - Paradigm Shift.mp3"
+dest_files=[ "res://.import/Liquid Tension Experiment - Paradigm Shift.mp3-932efa071c69de462d60b0b9814d570b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

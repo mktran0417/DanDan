@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/05 Great Fairy's Fountain Theme.mp3-761574ab00ec3111d4471b2a1d7d40a6.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/05 Great Fairy's Fountain Theme.mp3"
+dest_files=[ "res://.import/05 Great Fairy's Fountain Theme.mp3-761574ab00ec3111d4471b2a1d7d40a6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

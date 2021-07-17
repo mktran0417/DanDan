@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Louis Futon - Surreal (Feat. RKCB).mp3-65e8280fdc3e5192a30d0e3c728f4f2a.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Louis Futon - Surreal (Feat. RKCB).mp3"
+dest_files=[ "res://.import/Louis Futon - Surreal (Feat. RKCB).mp3-65e8280fdc3e5192a30d0e3c728f4f2a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

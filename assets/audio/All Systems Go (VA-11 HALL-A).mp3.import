@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/All Systems Go (VA-11 HALL-A).mp3-486357d41e2c4334595baa8fd5cce9cb.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/All Systems Go (VA-11 HALL-A).mp3"
+dest_files=[ "res://.import/All Systems Go (VA-11 HALL-A).mp3-486357d41e2c4334595baa8fd5cce9cb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

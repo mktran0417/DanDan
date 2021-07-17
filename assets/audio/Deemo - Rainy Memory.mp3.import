@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Deemo - Rainy Memory.mp3-1ea6efff2584e3ffabe75725ce682b9a.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Deemo - Rainy Memory.mp3"
+dest_files=[ "res://.import/Deemo - Rainy Memory.mp3-1ea6efff2584e3ffabe75725ce682b9a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

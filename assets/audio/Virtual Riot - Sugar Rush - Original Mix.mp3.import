@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Virtual Riot - Sugar Rush - Original Mix.mp3-3ba25cdacaa8df65e843d1815b3ec844.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Virtual Riot - Sugar Rush - Original Mix.mp3"
+dest_files=[ "res://.import/Virtual Riot - Sugar Rush - Original Mix.mp3-3ba25cdacaa8df65e843d1815b3ec844.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

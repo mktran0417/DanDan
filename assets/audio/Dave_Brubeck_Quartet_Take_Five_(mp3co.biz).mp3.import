@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Dave_Brubeck_Quartet_Take_Five_(mp3co.biz).mp3-237fa8bb8d3f6f1bbb4d49d19fea9693.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Dave_Brubeck_Quartet_Take_Five_(mp3co.biz).mp3"
+dest_files=[ "res://.import/Dave_Brubeck_Quartet_Take_Five_(mp3co.biz).mp3-237fa8bb8d3f6f1bbb4d49d19fea9693.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

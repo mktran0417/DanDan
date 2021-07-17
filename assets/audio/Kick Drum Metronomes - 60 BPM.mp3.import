@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Kick Drum Metronomes - 60 BPM.mp3-5a8b4a05681787af859f855789ed5e07.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Kick Drum Metronomes - 60 BPM.mp3"
+dest_files=[ "res://.import/Kick Drum Metronomes - 60 BPM.mp3-5a8b4a05681787af859f855789ed5e07.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

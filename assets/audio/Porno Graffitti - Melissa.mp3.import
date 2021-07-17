@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Porno Graffitti - Melissa.mp3-330115bb43068041b264454c916fc0b1.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Porno Graffitti - Melissa.mp3"
+dest_files=[ "res://.import/Porno Graffitti - Melissa.mp3-330115bb43068041b264454c916fc0b1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

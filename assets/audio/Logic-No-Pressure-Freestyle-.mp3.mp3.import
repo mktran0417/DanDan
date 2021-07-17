@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Logic-No-Pressure-Freestyle-.mp3.mp3-668b3ece26288ce75a8a9f7c849b7c7f.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Logic-No-Pressure-Freestyle-.mp3.mp3"
+dest_files=[ "res://.import/Logic-No-Pressure-Freestyle-.mp3.mp3-668b3ece26288ce75a8a9f7c849b7c7f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

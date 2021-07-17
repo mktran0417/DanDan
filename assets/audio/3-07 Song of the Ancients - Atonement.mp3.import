@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-07 Song of the Ancients - Atonement.mp3-2c415fff545e3ea7abcf2df97170fa73.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/3-07 Song of the Ancients - Atonement.mp3"
+dest_files=[ "res://.import/3-07 Song of the Ancients - Atonement.mp3-2c415fff545e3ea7abcf2df97170fa73.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Panel.gd" type="Script" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="start" type="Node" parent="."]
+
+[node name="Panel" type="Panel" parent="start"]
+margin_left = 626.334
+margin_top = 213.268
+margin_right = 1059.33
+margin_bottom = 662.268
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="start/Panel"]
+margin_left = 74.5203
+margin_top = 46.7703
+margin_right = 128.52
+margin_bottom = 60.7703
+text = "Test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="start/Panel"]
+margin_left = 62.858
+margin_top = 110.001
+margin_right = 368.858
+margin_bottom = 325.001
+text = "Press Me BBY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[connection signal="pressed" from="start/Panel/Button" to="start/Panel" method="_on_Button_pressed"]

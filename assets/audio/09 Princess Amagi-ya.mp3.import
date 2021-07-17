@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/09 Princess Amagi-ya.mp3-dd39b0c6aa634b696205fe64c9775963.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/09 Princess Amagi-ya.mp3"
+dest_files=[ "res://.import/09 Princess Amagi-ya.mp3-dd39b0c6aa634b696205fe64c9775963.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

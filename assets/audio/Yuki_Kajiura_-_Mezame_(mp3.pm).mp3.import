@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Yuki_Kajiura_-_Mezame_(mp3.pm).mp3-7c634204cab4f1a32431d2e8a41a7465.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Yuki_Kajiura_-_Mezame_(mp3.pm).mp3"
+dest_files=[ "res://.import/Yuki_Kajiura_-_Mezame_(mp3.pm).mp3-7c634204cab4f1a32431d2e8a41a7465.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
