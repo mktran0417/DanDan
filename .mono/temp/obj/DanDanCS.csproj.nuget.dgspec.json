@@ -10,11 +10,11 @@
         "projectUniqueName": "C:\\Dev\\cocoBit\\DanDan\\DanDanCS.csproj",
         "projectName": "DanDanCS",
         "projectPath": "C:\\Dev\\cocoBit\\DanDan\\DanDanCS.csproj",
-        "packagesPath": "C:\\Users\\miray\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\coco\\.nuget\\packages\\",
         "outputPath": "C:\\Dev\\cocoBit\\DanDan\\.mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\miray\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\coco\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "net472": {
+            "targetAlias": "net472",
             "projectReferences": {}
           }
         },
@@ -37,13 +38,14 @@
       },
       "frameworks": {
         "net472": {
+          "targetAlias": "net472",
           "dependencies": {
             "NAudio": {
               "target": "Package",
               "version": "[2.0.1, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

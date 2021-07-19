@@ -187,7 +187,7 @@ public class Audio : Node
     private List<float> makeBeatmap()
     {
         List<float>[] energySpectrum = makeEnergySpectrum();
-        foreach (float[] index in energySpectrum)
+        foreach (List<float> index in energySpectrum)
         {
             GD.Print(index.Count + "count");
         }
@@ -466,34 +466,34 @@ public class Audio : Node
         return combined;
     }
 
-
-    private avgFilter(var arr, var avgArr, var subband, var variances, var subbandVariance)
-    {
-        let limit = 1;
-        for (let i = 0; i < arr.length; i++)
+    /* 
+        private avgFilter(var arr, var avgArr, var subband, var variances, var subbandVariance)
         {
-            for (let j = 0; j < arr[i].length; j++)
+            let limit = 1;
+            for (let i = 0; i < arr.length; i++)
             {
-                let steps = limit / variances[j] * 0.5;
-                let varSteps = limit / subbandVariance[i] * 2;
-
-                let C = 1.5142857;
-                let C_VAR = 1.5142857;
-
-                C += (-steps * variances[j]);
-                C_VAR += (-varSteps * subbandVariance[j]);
-
-                //C += (-steps * variances[j]) < -limit ? -limit : (-steps * variances[j]);
-                //C_VAR += (-varSteps * subbandVariance[j]) < -limit ? -limit : (-varSteps * subbandVariance[j]);
-
-                if (avgArr[j] * C > arr[i][j] || subband[i] * C_VAR > arr[i][j])
+                for (let j = 0; j < arr[i].length; j++)
                 {
-                    arr[i][j] = 0;
+                    let steps = limit / variances[j] * 0.5;
+                    let varSteps = limit / subbandVariance[i] * 2;
+
+                    let C = 1.5142857;
+                    let C_VAR = 1.5142857;
+
+                    C += (-steps * variances[j]);
+                    C_VAR += (-varSteps * subbandVariance[j]);
+
+                    //C += (-steps * variances[j]) < -limit ? -limit : (-steps * variances[j]);
+                    //C_VAR += (-varSteps * subbandVariance[j]) < -limit ? -limit : (-varSteps * subbandVariance[j]);
+
+                    if (avgArr[j] * C > arr[i][j] || subband[i] * C_VAR > arr[i][j])
+                    {
+                        arr[i][j] = 0;
+                    }
                 }
             }
-        }
-        return arr;
-    }
+            return arr;
+        } */
     private float getPeriod()
     {
         return 1 / ((float)SIZE / (float)sampleRate);

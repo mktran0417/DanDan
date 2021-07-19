@@ -1,1 +1,13 @@
 **\assets\audio\
+default_env.tres
+Main.tscn
+project.godot
+.import/Player.svg-b37147c9851c6255ad6fbb9a9feec526.md5
+.mono/assemblies/Debug/api_hash_cache.cfg
+.mono/assemblies/Debug/GodotSharp.xml
+.mono/assemblies/Debug/GodotSharpEditor.xml
+.mono/metadata/ide_messaging_meta.txt
+.mono/metadata/scripts_metadata.editor
+.mono/metadata/scripts_metadata.editor_player
+.mono/temp/obj/Debug/DanDanCS.assets.cache
+assets/images/Player.svg.import
