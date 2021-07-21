@@ -42,36 +42,6 @@ public class Audio : Node
     private void analyze(string file)
     {
         calcMagnitude(file);
-
-
-        using (TextWriter tw = new StreamWriter("pcm.csv"))
-        {
-            int count = 0;
-            tw.WriteLine("x, y");
-            foreach (float s in data)
-            {
-                tw.WriteLine(count + ", " + s);
-                count++;
-            }
-            tw.Close();
-        }
-
-        using (TextWriter tw = new StreamWriter("fft.csv"))
-        {
-            int count = 0;
-            tw.WriteLine("x, y");
-            foreach (Complex[] data in fftData)
-            {
-                foreach (Complex point in data)
-                {
-                    tw.WriteLine(count + ", " + point.X);
-                    count++;
-                }
-            }
-            tw.Close();
-        }
-
-
         List<float> beatmap = makeBeatmap();
         GD.Print(logArr.Length + "logArr length");
         GD.Print(beatmap.Count + "beatmap");
@@ -138,6 +108,19 @@ public class Audio : Node
                 FastFourierTransform.FFT(true, (int)Math.Log(SIZE, 2.0), prevChunk);
                 Complex[] fftMagnitude = overlap(i, chunk, nextChunk, prevChunk, chunked);
                 fftData.Add(fftMagnitude);
+            }
+        }
+        using (TextWriter tw = new StreamWriter("fft.csv"))
+        {
+            int count = 0;
+            foreach (Complex[] data in fftData)
+            {
+                foreach (Complex point in data)
+                {
+                    GD.Print(point.X);
+                    tw.WriteLine(count + ", " + point.X);
+                    count++;
+                }
             }
         }
     }
