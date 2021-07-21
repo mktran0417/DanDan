@@ -26,8 +26,8 @@ Audio="*res://Audio/Audio.cs"
 
 [global]
 
-build=false
-profile=true
+build=true
+profile=false
 
 [input]
 
@@ -65,10 +65,6 @@ shift={
 [logging]
 
 file_logging/enable_file_logging=true
-
-[mono]
-
-profiler/enabled=true
 
 [physics]
 

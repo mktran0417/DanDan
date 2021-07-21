@@ -1,10 +1,9 @@
+C:\Dev\cocoBit\DanDan\.mono\temp\obj\Debug\DanDanCS.csproj.AssemblyReference.cache
 C:\Dev\cocoBit\DanDan\.mono\temp\obj\Debug\DanDanCS.AssemblyInfoInputs.cache
 C:\Dev\cocoBit\DanDan\.mono\temp\obj\Debug\DanDanCS.AssemblyInfo.cs
+C:\Dev\cocoBit\DanDan\.mono\temp\obj\Debug\DanDanCS.csproj.CoreCompileInputs.cache
 C:\Dev\cocoBit\DanDan\.mono\temp\bin\Debug\DanDanCS.dll
 C:\Dev\cocoBit\DanDan\.mono\temp\bin\Debug\DanDanCS.pdb
-C:\Dev\cocoBit\DanDan\.mono\temp\obj\Debug\DanDanCS.dll
-C:\Dev\cocoBit\DanDan\.mono\temp\obj\Debug\DanDanCS.pdb
-C:\Dev\cocoBit\DanDan\.mono\temp\obj\Debug\DanDanCS.csproj.CopyComplete
 C:\Dev\cocoBit\DanDan\.mono\temp\bin\Debug\Microsoft.Win32.Registry.dll
 C:\Dev\cocoBit\DanDan\.mono\temp\bin\Debug\NAudio.dll
 C:\Dev\cocoBit\DanDan\.mono\temp\bin\Debug\NAudio.Asio.dll
@@ -15,5 +14,6 @@ C:\Dev\cocoBit\DanDan\.mono\temp\bin\Debug\NAudio.WinForms.dll
 C:\Dev\cocoBit\DanDan\.mono\temp\bin\Debug\NAudio.WinMM.dll
 C:\Dev\cocoBit\DanDan\.mono\temp\bin\Debug\System.Security.AccessControl.dll
 C:\Dev\cocoBit\DanDan\.mono\temp\bin\Debug\System.Security.Principal.Windows.dll
-C:\Dev\cocoBit\DanDan\.mono\temp\obj\Debug\DanDanCS.csproj.AssemblyReference.cache
-C:\Dev\cocoBit\DanDan\.mono\temp\obj\Debug\DanDanCS.csproj.CoreCompileInputs.cache
+C:\Dev\cocoBit\DanDan\.mono\temp\obj\Debug\DanDanCS.csproj.CopyComplete
+C:\Dev\cocoBit\DanDan\.mono\temp\obj\Debug\DanDanCS.dll
+C:\Dev\cocoBit\DanDan\.mono\temp\obj\Debug\DanDanCS.pdb

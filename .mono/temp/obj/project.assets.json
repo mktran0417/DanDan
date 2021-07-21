@@ -414,11 +414,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dev\\cocoBit\\DanDan\\DanDanCS.csproj",
+      "projectUniqueName": "c:\\Dev\\cocoBit\\DanDan\\DanDanCS.csproj",
       "projectName": "DanDanCS",
-      "projectPath": "C:\\Dev\\cocoBit\\DanDan\\DanDanCS.csproj",
+      "projectPath": "c:\\Dev\\cocoBit\\DanDan\\DanDanCS.csproj",
       "packagesPath": "C:\\Users\\coco\\.nuget\\packages\\",
-      "outputPath": "C:\\Dev\\cocoBit\\DanDan\\.mono\\temp\\obj\\",
+      "outputPath": "c:\\Dev\\cocoBit\\DanDan\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\coco\\AppData\\Roaming\\NuGet\\NuGet.Config",

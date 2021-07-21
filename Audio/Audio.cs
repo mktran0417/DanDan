@@ -42,6 +42,34 @@ public class Audio : Node
     private void analyze(string file)
     {
         calcMagnitude(file);
+        using (TextWriter tw = new StreamWriter("source.txt"))
+        {
+            int count = 0;
+            foreach (float data in data)
+            {
+                count++;
+                tw.WriteLine(count + ", " + data);
+            }
+
+            tw.Flush();
+            tw.Close();
+        }
+
+        using (TextWriter tw = new StreamWriter("source.txt"))
+        {
+            int count = 0;
+            foreach (Complex[] data in fftData)
+            {
+                foreach (Complex point in data)
+                {
+                    count++;
+                    tw.WriteLine(count + ", " + point.X);
+
+                }
+            }
+            tw.Flush();
+            tw.Close();
+        }
         List<float> beatmap = makeBeatmap();
         GD.Print(logArr.Length + "logArr length");
         GD.Print(beatmap.Count + "beatmap");
@@ -110,19 +138,7 @@ public class Audio : Node
                 fftData.Add(fftMagnitude);
             }
         }
-        using (TextWriter tw = new StreamWriter("fft.csv"))
-        {
-            int count = 0;
-            foreach (Complex[] data in fftData)
-            {
-                foreach (Complex point in data)
-                {
-                    GD.Print(point.X);
-                    tw.WriteLine(count + ", " + point.X);
-                    count++;
-                }
-            }
-        }
+
     }
 
     public Complex[] chunkData(int i, Complex[] chunk, Complex[] nextChunk, Complex[] prevChunk)
