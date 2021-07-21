@@ -33,8 +33,7 @@ shape = SubResource( 1 )
 frames = SubResource( 2 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="main"]
-position = Vector2( 961, 540 )
+position = Vector2( 478, 302 )
 stream = ExtResource( 3 )
-autoplay = true
 
 [node name="Node" type="Node" parent="."]

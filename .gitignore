@@ -1,4 +1,5 @@
 **\assets\audio\
+**\plotting\
 default_env.tres
 Main.tscn
 project.godot
@@ -11,3 +12,5 @@ project.godot
 .mono/metadata/scripts_metadata.editor_player
 .mono/temp/obj/Debug/DanDanCS.assets.cache
 assets/images/Player.svg.import
+pcm.csv
+fft.csv

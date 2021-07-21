@@ -20,10 +20,16 @@ public class Audio : Node
 
     Audio()
     {
-        logArr = new int[] { 0, 2, 5, 8, 12, 16, 21, 26, 31, 37, 43, 49, 55, 61, 68, 75, 82, 89, 96, 103, 110, 118, 126, 134, 142, 150, 158, 166, 174, 182, 190, 198, 207, 216, 225, 234, 243, 252, 261, 270, 279, 288, 297, 306, 315, 324, 333, 342, 352, 362, 372, 382, 392, 402, 412, 422, 432, 442, 452, 462, 472, 482, 492, 502, 512 };
+        logArr = new int[] {
+            0, 2, 5, 8, 12, 16, 21, 26, 31, 37, 43, 49, 55, 61, 68, 75, 82, 89, 96,
+            103, 110, 118, 126, 134, 142, 150, 158, 166, 174, 182, 190, 198, 207, 216,
+            225, 234, 243, 252, 261, 270, 279, 288, 297, 306, 315, 324, 333, 342, 352,
+            362, 372, 382, 392, 402, 412, 422, 432, 442, 452, 462, 472, 482, 492, 502,
+            512
+        };
         //if (System.IO.File.Exists(file))
         //{
-        file = "assets//audio//Logic-No-Pressure-Freestyle-.mp3.mp3";
+        file = "assets//audio//09 Princess Amagi-ya.mp3";
         //}
     }
     public override void _Ready()
@@ -35,10 +41,41 @@ public class Audio : Node
 
     private void analyze(string file)
     {
-        calculateMagnitude(file);
+        calcMagnitude(file);
+
+
+        using (TextWriter tw = new StreamWriter("pcm.csv"))
+        {
+            int count = 0;
+            tw.WriteLine("x, y");
+            foreach (float s in data)
+            {
+                tw.WriteLine(count + ", " + s);
+                count++;
+            }
+            tw.Close();
+        }
+
+        using (TextWriter tw = new StreamWriter("fft.csv"))
+        {
+            int count = 0;
+            tw.WriteLine("x, y");
+            foreach (Complex[] data in fftData)
+            {
+                foreach (Complex point in data)
+                {
+                    tw.WriteLine(count + ", " + point.X);
+                    count++;
+                }
+            }
+            tw.Close();
+        }
+
+
         List<float> beatmap = makeBeatmap();
         GD.Print(logArr.Length + "logArr length");
         GD.Print(beatmap.Count + "beatmap");
+
         using (TextWriter tw = new StreamWriter("source.txt"))
         {
             int count = 0;
@@ -47,6 +84,7 @@ public class Audio : Node
                 count++;
                 tw.WriteLine(count + ", " + beats);
             }
+            tw.Close();
         }
     }
     //gets data from file, converts to mono, and applies a hammingwindow to the data.
@@ -58,10 +96,10 @@ public class Audio : Node
         using (AudioFileReader audioFile = new AudioFileReader(file))
         {
             ISampleProvider analyze = audioFile.ToSampleProvider();
+            GD.Print(analyze.WaveFormat.BitsPerSample);
             float[] buffer = new float[SIZE];
             totalSamples = (int)(audioFile.Length / audioFile.BlockAlign) / SIZE;
             sampleRate = audioFile.WaveFormat.SampleRate;
-
             WINDOW_SIZE = getPeriod() / 2;
 
             analyze.ToMono();
@@ -84,7 +122,7 @@ public class Audio : Node
     //and uses fft to extract the magnitude of the windows. the windows
     //are then averaged out to provide more accurate data to make up for the
     //window function zeroing values closer to the ends of the magnitude array.
-    private void calculateMagnitude(string file)
+    private void calcMagnitude(string file)
     {
         populateData();
         using (AudioFileReader audioFile = new AudioFileReader(file))
@@ -92,8 +130,6 @@ public class Audio : Node
             Complex[] prevChunk = new Complex[SIZE];
             Complex[] chunk = new Complex[SIZE];
             Complex[] nextChunk = new Complex[SIZE];
-            float[] buffer = new float[SIZE];
-
             for (int i = 0; i < totalSamples; i++)
             {
                 Complex[] chunked = chunkData(i, chunk, nextChunk, prevChunk);
@@ -105,8 +141,6 @@ public class Audio : Node
             }
         }
     }
-
-
 
     public Complex[] chunkData(int i, Complex[] chunk, Complex[] nextChunk, Complex[] prevChunk)
     {
@@ -151,8 +185,8 @@ public class Audio : Node
                 d = nextChunk[j + 1].X;
                 square = (float)Math.Sqrt(((a * a) + (b * b)));
                 squareTwo = (float)Math.Sqrt(((c * c) + (d * d)));
-                square *= square;
-                squareTwo *= squareTwo;
+                //square *= square;
+                //squareTwo *= squareTwo;
                 buffer[j].X = (square + squareTwo) / 2;
             }
             else if (i == SIZE)
@@ -163,8 +197,8 @@ public class Audio : Node
                 f = prevChunk[j + 1].X;
                 square = (float)Math.Sqrt(((a * a) + (b * b)));
                 squareThree = (float)Math.Sqrt(((e * e) + (f * f)));
-                square *= square;
-                squareThree *= squareThree;
+                //square *= square;
+                //squareThree *= squareThree;
                 buffer[j].X = (square + squareThree) / 2;
             }
             else
@@ -178,6 +212,10 @@ public class Audio : Node
                 square = (float)Math.Sqrt(((a * a + b * b)));
                 squareTwo = (float)Math.Sqrt(((c * c + d * d)));
                 squareThree = (float)Math.Sqrt(((e * e + f * f)));
+                //square *= square;
+                //squareTwo *= squareTwo;
+                //squareThree *= squareThree;
+
                 buffer[j].X = (square + squareTwo + squareThree) / 3;
             }
         }
@@ -187,10 +225,6 @@ public class Audio : Node
     private List<float> makeBeatmap()
     {
         List<float>[] energySpectrum = makeEnergySpectrum();
-        foreach (List<float> index in energySpectrum)
-        {
-            GD.Print(index.Count + "count");
-        }
         List<float>[] means = calcMeanVals(energySpectrum);
         (List<float>[], List<float>) variances = calcVariances(energySpectrum, means);
         List<float> deviations = calcDeviations(variances.Item1);
@@ -212,7 +246,7 @@ public class Audio : Node
 
         Complex[] lastArray = new Complex[fftData[0].Length];
         fftData[0].CopyTo(lastArray, 0);
-        for (int i = 0; i < fftData[i].Length; i++)
+        for (int i = 0; i < fftData.Count; i++)
         {
             float flux = 0;
             for (int j = 0; j < logArr.Length - 1; j++)
@@ -235,6 +269,7 @@ public class Audio : Node
     private List<float>[] calcMeanVals(List<float>[] energySpectrum)
     {
         float mean = 0;
+        float time = 1 / (float)((2 * WINDOW_SIZE) + 1);
         List<float>[] meanVals = new List<float>[64];
         for (int i = 0; i < meanVals.Length; i++)
         {
@@ -250,7 +285,7 @@ public class Audio : Node
                 {
                     mean += energySpectrum[i][k];
                 }
-                mean /= (float)((2 * WINDOW_SIZE) + 1);
+                mean *= time;
                 meanVals[i].Add(mean);
             }
         }
@@ -269,6 +304,7 @@ public class Audio : Node
         {
             float maxVariance = 0;
             float variance = 0;
+            float time = 1 / (float)((2 * WINDOW_SIZE) + 1);
             for (int j = 0; j < energySpectrum[i].Count; j++)
             {
                 int start = (int)Math.Max(0, j - WINDOW_SIZE);
@@ -277,7 +313,7 @@ public class Audio : Node
                 {
                     variance += (float)Math.Pow((float)(energySpectrum[i][k] - means[i][(int)(j / WINDOW_SIZE)]), 2);
                 }
-                variance /= (float)((2 * WINDOW_SIZE) + 1);
+                variance *= time;
                 if (variance > maxVariance)
                 {
                     maxVariance = variance;
@@ -308,16 +344,15 @@ public class Audio : Node
     private List<float>[] prunVals(List<float>[] energySpectrum, List<float>[] means, List<float>[] variances, List<float> maxVariance, List<float> deviations)
     {
         List<float>[] prunned_array = new List<float>[64];
-        int limit = 1;
         for (int i = 0; i < energySpectrum.Length; i++)
         {
-            float steps = (float)limit / (float)maxVariance[i];
+            float steps = 1 / maxVariance[i];
             List<float> prunned = new List<float>();
             for (int j = 0; j < energySpectrum[i].Count; j++)
             {
                 float C = 1.5142857F;
-                C += -steps * variances[i][j];
-                C += (-steps * variances[i][j]) < -limit ? -limit : (-steps * variances[i][j]);
+                //C += -steps * 2 * variances[i][j];
+                //C += (-steps * variances[i][j]) < -limit ? -limit : (-steps * variances[i][j]);
                 if (energySpectrum[i][j] >= means[i][j] * C && (energySpectrum[i][j] - means[i][j]) / deviations[i] >= 0)
                 {
                     prunned.Add(energySpectrum[i][j] - means[i][j]);
@@ -466,34 +501,98 @@ public class Audio : Node
         return combined;
     }
 
-    /* 
-        private avgFilter(var arr, var avgArr, var subband, var variances, var subbandVariance)
+    /* private float[] avgFilter(List<float>[] arr, var avgArr, var subband, var variances, var subbandVariance)
+    {
+        let limit = 1;
+        for (let i = 0; i < arr.length; i++)
         {
-            let limit = 1;
-            for (let i = 0; i < arr.length; i++)
+            for (let j = 0; j < arr[i].length; j++)
             {
-                for (let j = 0; j < arr[i].length; j++)
+                let steps = limit / variances[j] * 0.5;
+                let varSteps = limit / subbandVariance[i] * 2;
+
+                let C = 1.5142857;
+                let C_VAR = 1.5142857;
+
+                C += (-steps * variances[j]);
+                C_VAR += (-varSteps * subbandVariance[j]);
+
+                //C += (-steps * variances[j]) < -limit ? -limit : (-steps * variances[j]);
+                //C_VAR += (-varSteps * subbandVariance[j]) < -limit ? -limit : (-varSteps * subbandVariance[j]);
+
+                if (avgArr[j] * C > arr[i][j] || subband[i] * C_VAR > arr[i][j])
                 {
-                    let steps = limit / variances[j] * 0.5;
-                    let varSteps = limit / subbandVariance[i] * 2;
-
-                    let C = 1.5142857;
-                    let C_VAR = 1.5142857;
-
-                    C += (-steps * variances[j]);
-                    C_VAR += (-varSteps * subbandVariance[j]);
-
-                    //C += (-steps * variances[j]) < -limit ? -limit : (-steps * variances[j]);
-                    //C_VAR += (-varSteps * subbandVariance[j]) < -limit ? -limit : (-varSteps * subbandVariance[j]);
-
-                    if (avgArr[j] * C > arr[i][j] || subband[i] * C_VAR > arr[i][j])
-                    {
-                        arr[i][j] = 0;
-                    }
+                    arr[i][j] = 0;
                 }
             }
-            return arr;
-        } */
+        }
+        return arr;
+    }
+ 
+    private List<float> calcInstantAvg(List<float>[] energySpectrum)
+    {
+        List<float> totalAvg = new List<float>();
+        for (int i = 0; i < energySpectrum[i].Count; i++)
+        {
+            float avg = 0;
+            for (int j = 0; j < energySpectrum.Length; j++)
+            {
+                avg += energySpectrum[j][i];
+            }
+            avg /= 64;
+            totalAvg.Add(avg);
+        }
+        return totalAvg;
+    }
+
+    private List<float> calcSubbandAvg(List<float>[] energySpectrum)
+    {
+        List<float> subbandAvg = new List<float>();
+        for (int i = 0; i < energySpectrum.Length; i++)
+        {
+            float avg = 0;
+            for (int j = 0; j < energySpectrum[i].Count; j++)
+            {
+                avg += energySpectrum[i][j];
+            }
+            avg /= energySpectrum[i].Count;
+
+            subbandAvg.Add(avg);
+        }
+        return subbandAvg;
+    }
+
+    private List<float> calcVVariance(List<float>[] energySpectrum, List<float> instant)
+    {
+        List<float> variances = new List<float>();
+        for (int i = 0; i < energySpectrum[i].Count; i++)
+        {
+            float variance = 0;
+            for (int j = 0; j < energySpectrum.Length; j++)
+            {
+                variance += (float)Math.Pow(energySpectrum[j][i] - instant[j], 2);
+            }
+            variance /= energySpectrum[i].Count;
+            variances.Add(variance);
+        }
+        return variances;
+    }
+    private List<float> calcHVariance(List<float>[] energySpectrum, List<float> subband)
+    {
+        List<float> variances = new List<float>();
+        for (int i = 0; i < energySpectrum.Length; i++)
+        {
+            float variance = 0;
+            for (int j = 0; j < energySpectrum[i].Count; j++)
+            {
+                variance += (float)Math.Pow(energySpectrum[i][j] - subband[j], 2);
+            }
+
+            variance /= energySpectrum.Length;
+            variances.Add(variance);
+        }
+        return variances;
+    }*/
     private float getPeriod()
     {
         return 1 / ((float)SIZE / (float)sampleRate);
