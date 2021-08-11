@@ -42,7 +42,7 @@ public class Audio : Node
     private void analyze(string file)
     {
         calcMagnitude(file);
-        using (TextWriter tw = new StreamWriter("source.txt"))
+        using (TextWriter tw = new StreamWriter("pcm.csv"))
         {
             int count = 0;
             foreach (float data in data)
@@ -55,7 +55,7 @@ public class Audio : Node
             tw.Close();
         }
 
-        using (TextWriter tw = new StreamWriter("source.txt"))
+        using (TextWriter tw = new StreamWriter("fft.csv"))
         {
             int count = 0;
             foreach (Complex[] data in fftData)
@@ -70,20 +70,10 @@ public class Audio : Node
             tw.Flush();
             tw.Close();
         }
+
         List<float> beatmap = makeBeatmap();
         GD.Print(logArr.Length + "logArr length");
         GD.Print(beatmap.Count + "beatmap");
-
-        using (TextWriter tw = new StreamWriter("source.txt"))
-        {
-            int count = 0;
-            foreach (float beats in beatmap)
-            {
-                count++;
-                tw.WriteLine(count + ", " + beats);
-            }
-            tw.Close();
-        }
     }
     //gets data from file, converts to mono, and applies a hammingwindow to the data.
     private void populateData()
@@ -93,20 +83,23 @@ public class Audio : Node
 
         using (AudioFileReader audioFile = new AudioFileReader(file))
         {
-            ISampleProvider analyze = audioFile.ToSampleProvider();
+            ISampleProvider analyze = audioFile.ToSampleProvider().ToMono();
             GD.Print(analyze.WaveFormat.BitsPerSample);
             float[] buffer = new float[SIZE];
             totalSamples = (int)(audioFile.Length / audioFile.BlockAlign) / SIZE;
             sampleRate = audioFile.WaveFormat.SampleRate;
             WINDOW_SIZE = getPeriod() / 2;
 
-            analyze.ToMono();
             do
             {
                 bytesRead = analyze.Read(buffer, 0, SIZE);
+
                 for (int i = 0; i < SIZE; i++)
                 {
-                    buffer[i] *= (float)FastFourierTransform.HammingWindow(i, SIZE);
+                    if (buffer[i] != 0.0)
+                    {
+                        buffer[i] = (20 * (float)Math.Log10(Math.Abs(buffer[i]))) * (float)FastFourierTransform.HammingWindow(i, SIZE);
+                    }
                 }
                 data.AddRange(buffer);
             } while (bytesRead != 0);
@@ -168,6 +161,7 @@ public class Audio : Node
         return fftMagnitude;
     }
 
+    //power
     public Complex[] overlap(int i, Complex[] chunk, Complex[] nextChunk, Complex[] prevChunk, Complex[] fftMagnitude)
     {
         Complex[] buffer = new Complex[SIZE / 2];
@@ -184,8 +178,8 @@ public class Audio : Node
                 d = nextChunk[j + 1].X;
                 square = (float)Math.Sqrt(((a * a) + (b * b)));
                 squareTwo = (float)Math.Sqrt(((c * c) + (d * d)));
-                //square *= square;
-                //squareTwo *= squareTwo;
+                square *= square;
+                squareTwo *= squareTwo;
                 buffer[j].X = (square + squareTwo) / 2;
             }
             else if (i == SIZE)
@@ -196,8 +190,8 @@ public class Audio : Node
                 f = prevChunk[j + 1].X;
                 square = (float)Math.Sqrt(((a * a) + (b * b)));
                 squareThree = (float)Math.Sqrt(((e * e) + (f * f)));
-                //square *= square;
-                //squareThree *= squareThree;
+                square *= square;
+                squareThree *= squareThree;
                 buffer[j].X = (square + squareThree) / 2;
             }
             else
@@ -211,9 +205,9 @@ public class Audio : Node
                 square = (float)Math.Sqrt(((a * a + b * b)));
                 squareTwo = (float)Math.Sqrt(((c * c + d * d)));
                 squareThree = (float)Math.Sqrt(((e * e + f * f)));
-                //square *= square;
-                //squareTwo *= squareTwo;
-                //squareThree *= squareThree;
+                square *= square;
+                squareTwo *= squareTwo;
+                squareThree *= squareThree;
 
                 buffer[j].X = (square + squareTwo + squareThree) / 3;
             }
@@ -280,7 +274,7 @@ public class Audio : Node
             {
                 int start = (int)(Math.Max(0, j - WINDOW_SIZE));
                 int end = (int)(Math.Min(energySpectrum[i].Count - 1, j + WINDOW_SIZE));
-                for (int k = 0; k <= end; k++)
+                for (int k = start; k <= end; k++)
                 {
                     mean += energySpectrum[i][k];
                 }
@@ -350,7 +344,7 @@ public class Audio : Node
             for (int j = 0; j < energySpectrum[i].Count; j++)
             {
                 float C = 1.5142857F;
-                //C += -steps * 2 * variances[i][j];
+                C += -steps * variances[i][j];
                 //C += (-steps * variances[i][j]) < -limit ? -limit : (-steps * variances[i][j]);
                 if (energySpectrum[i][j] >= means[i][j] * C && (energySpectrum[i][j] - means[i][j]) / deviations[i] >= 0)
                 {
