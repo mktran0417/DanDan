@@ -1,39 +1,30 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Ships/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/bitmap2.png" type="Texture" id=2]
-[ext_resource path="res://assets/audio/09 Princess Amagi-ya.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Ships/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/Circles.tscn" type="PackedScene" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 21, 30, 0, 0, 0, 0, 992, 27, 0, 0, 0, 0, 1006, 577, 0, 0, 0, 0, 25, 573, 0, 0, 0, 0, 19, 34 )
+}
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[node name="CanvasLayer" type="CanvasLayer"]
-
-[node name="main" type="Node" parent="."]
-
-[node name="Player" type="KinematicBody2D" parent="main"]
-show_behind_parent = true
-use_parent_material = true
-position = Vector2( 477.394, 299.342 )
-rotation = -1.5708
-scale = Vector2( 0.2, 0.2 )
+[node name="main" type="Node"]
 script = ExtResource( 1 )
+circles = ExtResource( 3 )
 
-[node name="player_shape" type="CollisionShape2D" parent="main/Player"]
-shape = SubResource( 1 )
+[node name="Player" parent="." instance=ExtResource( 2 )]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="main/Player"]
-frames = SubResource( 2 )
+[node name="Circle" parent="." instance=ExtResource( 3 )]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="main"]
-position = Vector2( 478, 302 )
-stream = ExtResource( 3 )
+[node name="CircleTimer" type="Timer" parent="."]
+wait_time = 0.5
 
-[node name="Node" type="Node" parent="."]
+[node name="SpawnPath" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="SpawnLoc" type="PathFollow2D" parent="SpawnPath"]
+position = Vector2( 21, 30 )
+rotation = -0.0030886
+
+[connection signal="timeout" from="CircleTimer" to="." method="_on_CircleTimer_timeout"]

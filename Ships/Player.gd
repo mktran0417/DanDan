@@ -13,9 +13,10 @@ var screen_size;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size;
-
+	position = get_viewport_rect().size / 2
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	var velocity = Vector2()  # The player's movement vector.
 	if InputEventMouseMotion:
 		rotation = get_global_mouse_position().angle_to_point(position);
@@ -39,17 +40,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed("space"):
 		shoot();
 
-	position += velocity * delta;
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	velocity = move_and_slide(velocity)
 
-	
 func rotate_player():
 	var coord: Vector2 = get_viewport().get_mouse_position(); 
 	return atan2((coord.y) - position.y, (coord.x) - position.x);
 		
 	
-
 func shoot():
 	#spawn a projectile
 	var bullet = Bullet.instance();

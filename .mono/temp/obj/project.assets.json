@@ -409,19 +409,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\coco\\.nuget\\packages\\": {}
+    "C:\\Users\\Michael\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Dev\\cocoBit\\DanDan\\DanDanCS.csproj",
+      "projectUniqueName": "C:\\Users\\Michael\\Documents\\Godot Projects\\DanDan\\DanDanCS.csproj",
       "projectName": "DanDanCS",
-      "projectPath": "c:\\Dev\\cocoBit\\DanDan\\DanDanCS.csproj",
-      "packagesPath": "C:\\Users\\coco\\.nuget\\packages\\",
-      "outputPath": "c:\\Dev\\cocoBit\\DanDan\\.mono\\temp\\obj\\",
+      "projectPath": "C:\\Users\\Michael\\Documents\\Godot Projects\\DanDan\\DanDanCS.csproj",
+      "packagesPath": "C:\\Users\\Michael\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Michael\\Documents\\Godot Projects\\DanDan\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\coco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Michael\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -452,7 +457,7 @@
             "version": "[2.0.1, )"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
