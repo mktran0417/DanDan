@@ -6,7 +6,6 @@ extends KinematicBody2D
 var speed = 600
 onready var target = get_node('/root/main/Player')
 var arc: float
-var velocity: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	look_at(target.position)
@@ -17,9 +16,8 @@ func _ready():
 #	pass
 
 func _physics_process(_delta):
-	velocity = move_and_slide(Vector2(cos(arc), sin(arc)) * speed)
-	for i in get_slide_count():
-		var collision = get_slide_collision(i)
+	var collision = move_and_collide(Vector2(cos(arc), sin(arc)) * speed)
+	if collision:
 		if(collision.collider.name == 'Player'):
 			queue_free()
 		
