@@ -28,6 +28,8 @@ Audio="*res://Audio/Audio.cs"
 
 build=true
 profile=false
+editor=false
+text=false
 
 [input]
 
@@ -65,6 +67,10 @@ shift={
 [logging]
 
 file_logging/enable_file_logging=true
+
+[mono]
+
+project/assembly_name="DanDanCS"
 
 [physics]
 

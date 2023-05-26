@@ -45,9 +45,9 @@ public class Audio : Node
 
 	public override void _Ready()
 	{
-		//Godot.Thread audio = new Godot.Thread();
-		//audio.Start(this, "analyze", file);
-		//audio.WaitToFinish();
+		Godot.Thread audio = new Godot.Thread();
+		audio.Start(this, "analyze", file);
+		audio.WaitToFinish();
 	}
 
 	private void analyze(string file)
@@ -56,15 +56,15 @@ public class Audio : Node
 
 		List<float> beatmap = makeBeatmap();
 
-		// using (TextWriter tw = new StreamWriter("Output//beatmap.csv"))
-		// {
-		//     foreach (float data in beatmap)
-		//     {
-		//         tw.WriteLine (data);
-		//     }
-		//     tw.Flush();
-		//     tw.Close();
-		// }
+		using (TextWriter tw = new StreamWriter("Output//beatmap.csv"))
+		{
+			foreach (float data in beatmap)
+			{
+				tw.WriteLine (data);
+			}
+			tw.Flush();
+			tw.Close();
+		}
 		using (TextWriter tw = new StreamWriter("Output//multimap.csv"))
 		{
 			foreach (List<float> frequencies in frequenciesBeatmap)
@@ -106,7 +106,7 @@ public class Audio : Node
 					if (buffer[i] != 0.0)
 					{
 						buffer[i] *=
-							(float) FastFourierTransform.HannWindow(i, SIZE);
+							(float) FastFourierTransform.BlackmannHarrisWindow(i, SIZE);
 					}
 				}
 				data.AddRange (buffer);
